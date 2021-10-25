@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int score, g;
+    scanf_s("%d", &score);
+    while (score < 0 || score > 100) {
+        printf("Error! Retry!\n");
+        scanf_s("%d", &score);
+    }
+    g = score / 10;
+    if (g >= 9)
+        printf("Grade is A!\n");
+    switch (g) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5: printf("Grade is E!\n"); break;
+    case 6: printf("Grade is D!\n"); break;
+    case 7: printf("Grade is C!\n"); break;
+    case 8: printf("Grade is B!\n"); break;
+    }
+    system("pause");//暂停的意思，等待用户信号
+    return 0;
+}
