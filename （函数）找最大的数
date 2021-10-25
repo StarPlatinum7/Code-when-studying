@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+void max1(int a, int b, int c);
+void max1(int a,int b,int c)
+{
+	int m;
+	if (a >= b)
+	{
+		m = a;
+	}
+	else 
+	{
+		m = b;
+	}
+	if (m >= c)
+	{
+		printf("最大数是%d", m);
+	}
+	else
+	{
+		printf("最大数是%d", c);
+	}
+}
+
+int max2(int a, int b, int c);
+int max2(int a, int b, int c)
+{
+	int m;
+	int max;
+	if (a >= b)
+	{
+		m = a;
+	}
+	else
+	{
+		m = b;
+	}
+	if (m >= c)
+	{
+		max = m;
+	}
+	else
+	{
+		max = c;
+	}
+	return max;
+}
+
+int max3(int a, int b);
+int max3(int a, int b)
+{
+	int max;
+	if (a >= b)
+	{
+		max = a;
+	}
+	else
+	{
+		max = b;
+	}
+	return max;
+}
+
+int main()
+{
+	int max;
+	//max1(13, 14, 15);
+	//max=max2(13, 14, 15 );
+	//max = max3(13, 14);
+	max = max3(max3(13, 14), 15);
+	printf("最大数是%d", max);
+	return 0;
+}
