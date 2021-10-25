@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main()
+{
+	int n, Sn=0,t=0,i;
+	printf("please input the n\n");
+	scanf_s("%d", &n);
+	for (i = 1; i <= n; i = i + 1)
+	{
+		t = t * 10;
+		t = t + 2;
+		Sn = Sn + t;
+
+	}
+	printf("Sn=%d", Sn);
+	return 0;
+
+}
