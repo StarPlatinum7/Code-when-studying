@@ -1,0 +1,147 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+	/*srand(0.25656);
+	int i;
+	for (i = 1; i <= 20; i++)
+	{
+		printf("%10d", 1 + rand() % 6);
+
+		if (i % 5 == 0)
+		{
+			printf("\n");
+		}
+	}*/
+	srand(time(NULL));
+	int i,m,n;
+	float a, b, c;//胜率
+	float l = 0, p = 0, o = 0;//l妖精p师徒o平局
+	int array[5]; int temp;
+
+	for (i = 1; i <= 5; i++)
+	{
+		printf("第%d局:  ",i);
+		m = 1 + rand() % 30;//妖精战斗力
+		array[i - 1] = m;
+		printf("\t妖精战斗力为%2d  ", m);
+		n = 1 + rand() % 4;
+		switch(n)
+		{
+		case(1):printf("\t唐僧 战斗力为0   ");
+			if (m > 0) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 0) {
+				printf("\t结果：唐僧胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+		case(2):printf("\t猴子 战斗力为30   ");
+			if (m > 30) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 30) {
+				printf("\t结果：猴子胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+		case(3):printf("\t八戒 战斗力为20   ");
+			if (m > 20) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 20) {
+				printf("\t结果：八戒胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+		case(4):printf("\t沙僧 战斗力为10   ");
+			if (m > 10) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 10) {
+				printf("\t结果：沙僧胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+
+		}
+	}
+	a = l / 10;//妖精
+	b = p / 10;//师徒
+	c = o / 10;//平局
+	printf("战局统计：师徒胜率为%f，妖精胜率为%f，平局概率为%f", b, a, c);
+	for (i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+	printf("\n妖精越来越强的结果：\n");
+	for (i = 0; i < 5; i++)
+	{
+		printf("第%d局:  ", i+1);
+		m = array[i];
+		
+		printf("\t妖精战斗力为%2d  ", m);
+		n = 1 + rand() % 4;
+		switch (n)
+		{
+		case(1):printf("\t唐僧 战斗力为0   ");
+			if (m > 0) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 0) {
+				printf("\t结果：唐僧胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+		case(2):printf("\t猴子 战斗力为30   ");
+			if (m > 30) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 30) {
+				printf("\t结果：猴子胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+		case(3):printf("\t八戒 战斗力为20   ");
+			if (m > 20) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 20) {
+				printf("\t结果：八戒胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+		case(4):printf("\t沙僧 战斗力为10   ");
+			if (m > 10) {
+				printf("\t结果：妖精胜利\n"); l = l + 1;
+			}
+			else if (m < 10) {
+				printf("\t结果：沙僧胜利\n"); p = p + 1;
+			}
+			else {
+				printf("\t结果：平局\n"); o = o + 1;
+			}break;
+
+		}
+	}
+	printf("战局统计：师徒胜率为%f，妖精胜率为%f，平局概率为%f", b, a, c);
+	return 0;
+}
