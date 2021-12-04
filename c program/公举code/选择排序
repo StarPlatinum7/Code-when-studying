@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+void resetarray(int array_x[], int array_size);
+void displayarray(int array_x[], int array_size);
+void sortarray(int array_x[], int array_size);
+int min(int i, int j);
+
+int main()
+{
+	const int arraysize = 8;
+	int a[arraysize];
+
+	printf("reset  the array");
+	resetarray(a, arraysize);
+	printf("\n");
+	displayarray(a, arraysize);
+
+	printf("\nsort the array\n");
+	sortarray(a, arraysize);
+	
+	return 0;
+
+}
+
+void resetarray(int array_x[], int array_size)//随机赋值
+{
+	srand(time(NULL));
+	for (int i = 0; i < array_size; i++)
+	{
+		array_x[i] = 1 + rand() % 100;		
+	}
+
+	return;
+}
+void displayarray(int array_x[], int array_size)//打印
+{
+	for (int j = 0; j < array_size; j++)
+	{
+		printf("%d    ", array_x[j]);
+	}
+	printf("\n");
+	return;
+}
+void sortarray(int array_x[], int array_size)//排序
+{
+	int m,i;
+	for (int j = 0; j < array_size; j++)
+	{
+		for (int i = j+1; i < array_size; i++)
+		{
+			if (array_x[j] < array_x[i])
+			{
+				m = array_x[j];
+				array_x[j] = array_x[i];
+				array_x[i] = m;
+			}		
+		}
+	}
+	displayarray(array_x, array_size);
+	return;
+}
