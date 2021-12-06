@@ -20,3 +20,11 @@ int main()
 	return 0;
 
 }
+c中的排序函数
+qsort(a, 1000, sizeof(int), cmp);
+//其中cmp函数应写为：
+int cmp(const void *a, const void *b)
+{
+    return *(int*)a - *(int*)b; //由小到大排序
+    //return *(int *)b - *(int *)a; 由大到小排序
+}
