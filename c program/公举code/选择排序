@@ -43,7 +43,7 @@ void displayarray(int array_x[], int array_size)//打印
 	printf("\n");
 	return;
 }
-void sortarray(int array_x[], int array_size)//排序
+void sortarray(int array_x[], int array_size)//排序(从大到小)
 {
 	int m,i;
 	for (int j = 0; j < array_size; j++)
