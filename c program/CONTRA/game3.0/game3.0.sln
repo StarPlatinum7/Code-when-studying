@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game3.0", "game3.0.vcxproj", "{8718D976-C791-40F6-AE97-E7FE84A702F6}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Contra", "..\Contra\Contra.vdproj", "{BE9B00E8-2644-45C0-88F1-15945558A727}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Debug|x64.ActiveCfg = Debug|x64
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Debug|x64.Build.0 = Debug|x64
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Debug|x86.ActiveCfg = Debug|Win32
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Debug|x86.Build.0 = Debug|Win32
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Release|x64.ActiveCfg = Release|x64
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Release|x64.Build.0 = Release|x64
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Release|x86.ActiveCfg = Release|Win32
+		{8718D976-C791-40F6-AE97-E7FE84A702F6}.Release|x86.Build.0 = Release|Win32
+		{BE9B00E8-2644-45C0-88F1-15945558A727}.Debug|x64.ActiveCfg = Debug
+		{BE9B00E8-2644-45C0-88F1-15945558A727}.Debug|x86.ActiveCfg = Debug
+		{BE9B00E8-2644-45C0-88F1-15945558A727}.Release|x64.ActiveCfg = Release
+		{BE9B00E8-2644-45C0-88F1-15945558A727}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7902ADCD-0CFF-4FD9-A2F2-9E6BCBF24515}
+	EndGlobalSection
+EndGlobal
