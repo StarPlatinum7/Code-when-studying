@@ -1,0 +1,71 @@
+//锦标赛算法在数组中找到最大值和第二大的值
+// sunny
+// 2022.3.23
+
+//算法的时间复杂度为o(n) n/2+n/4+n/8......
+//空间复杂度为o(1)  没有额外利用空间
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#define size 16
+int max1, max2;
+
+void swap(int *p1, int *p2) //交换两个元素
+{
+    int temp;
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+void print(int a[])//打印函数用于调试
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d\t", a[i]);
+    }
+    printf("\n");
+}
+void find(int *a, int n)
+{
+    int k = log2(n);
+    int p = 1;
+    int q;
+    for (int i = 0; i < k; i++)
+    {
+        q = 2 * p;
+        for (int t = 0; t < n; t = t + q)
+        {
+            if (a[t] < a[t + p]) //如果后面的大就交换元素
+            {
+
+                for (int m = 0; m < i; m++)
+                {
+                    swap(&a[t + m], &a[t + p + m]); //交换元素段
+                }
+                swap(&a[t + p], &a[t + i]); //此步骤可以将上一次比较的数字放在其后第k个
+            }
+        }
+        print(a);
+        p = q;//变大距离，类似锦标赛的淘汰
+    }
+    max1 = a[0];
+    max2 = a[k];
+    for (int j = 1; j < k; j++)//搜寻k个数字都有可能是第二大的数字
+    {
+        if (a[j] > max2)
+        {
+            max2 = a[j];
+        }
+    }
+}
+
+int main()
+{
+    int a[size] = {12, 14, 57, 88, 97, 89, 54, 67, 78, 9, 8, 76, 32, 54, 79, 99};
+    print(a);
+    find(a, size);
+    printf("max1=%d,max2=%d", max1, max2);
+
+    return 0;
+}
