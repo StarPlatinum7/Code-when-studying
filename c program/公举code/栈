@@ -41,7 +41,7 @@ Status push(SqStack* S, SElemType e)
 {
     if(S->top-S->base >= S->stacksize) //判满 
     {   //追加存储空间
-        S->base = (ElemType*)realloc(S->base(S->stacksize+STACKINCREMENT)*sizeof(ElemType));
+        S->base = (ElemType*)realloc(S->base,(S->stacksize+STACKINCREMENT)*sizeof(ElemType));
         if(!S->base) exit(OVERFLOW);  //上溢
         S->top = S->base+S->stacksize;
         S->stacksize += STACKINCREMENT;
