@@ -27,13 +27,13 @@ Status stackFull(SqStack* S)
     return ((S->top - S->base) == S->stacksize);
 }
 //读取栈顶的元素
-Status getTop(SqStack* S, ElemType e)
+Status getTop(SqStack* S, ElemType *e)
 {	//返回栈S的栈顶元素,但栈顶指针保持不变
     if(S->top == S->base)   //栈为空
     {	printf("Stack is empty!");
 	return ERROR;  
     }
-    e = *(S->top-1);
+    *e = *(S->top-1);
     return OK;
 }
 //入栈
