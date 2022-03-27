@@ -10,49 +10,49 @@ typedef struct
 //初始化栈
 Status  initStack(SqStack *S)
 {
-    S.base = (SElemType *)malloc(STACK_INIT_SIZE*sizeof(ElemType));      
-    if(!S.base) return ERROR;
-    S.top = S.base;
-    S.stacksize = STACK_INIT_SIZE;
+    S->base = (SElemType *)malloc(STACK_INIT_SIZE*sizeof(ElemType));      
+    if(!S->base) return ERROR;
+    S->top = S->base;
+    S->stacksize = STACK_INIT_SIZE;
     return OK;
 }
 //判断栈空
 Status stackEmpty(SqStack* S) 
 {
-    return S.top == S.base;
+    return S->top == S->base;
 }
 //判断栈满
 Status stackFull(SqStack* S)
 {
-    return ((S.top - S.base) == S.stacksize);
+    return ((S->top - S->base) == S->stacksize);
 }
 //读取栈顶的元素
 Status getTop(SqStack* S, ElemType e)
 {	//返回栈S的栈顶元素,但栈顶指针保持不变
-    if(S.top == S.base)   //栈为空
+    if(S->top == S->base)   //栈为空
     {	printf("Stack is empty!");
 	return ERROR;  
     }
-    e = *(S.top-1);
+    e = *(S->top-1);
     return OK;
 }
 //入栈
 Status push(SqStack* S, SElemType e)
 {
-    if(S.top-S.base >= S.stacksize) //判满 
+    if(S->top-S->base >= S->stacksize) //判满 
     {   //追加存储空间
-        S.base = (ElemType*)realloc(S.base(S.stacksize+STACKINCREMENT)*sizeof(ElemType));
-        if(!S.base) exit(OVERFLOW);  //上溢
-        S.top = S.base+S.stacksize;
-        S.stacksize += STACKINCREMENT;
+        S->base = (ElemType*)realloc(S->base(S->stacksize+STACKINCREMENT)*sizeof(ElemType));
+        if(!S->base) exit(OVERFLOW);  //上溢
+        S->top = S->base+S->stacksize;
+        S->stacksize += STACKINCREMENT;
     }
-    *S.top++ = e; //栈顶指针后移，赋值
+    *S->top++ = e; //栈顶指针后移，赋值
     return OK;
 }
 //出栈
 Status pop(SqStack* S, SElemType *e)
 {  //将栈S的栈顶元素弹出并返回
-    if(S.top == S.base)
+    if(S->top == S->base)
     {
         printf("Stack is empty!");
         return ERROR;
