@@ -57,7 +57,7 @@ Status pop(SqStack* S, SElemType *e)
         printf("Stack is empty!");
         return ERROR;
    }
-   e = s->top;
-   s->top--; 
+   e = S->top;
+   S->top--; 
    return OK;
 }
