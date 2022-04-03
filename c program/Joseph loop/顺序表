@@ -1,0 +1,60 @@
+//约瑟夫环问题   数组实现
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int a[110] = {0};
+
+void loop(int person)
+{
+    srand(time(NULL));
+    int out = 0, k = 0;                                      // cnt表示出列的人
+    int m = 0, i = 0;                                        // m 表示密码的下标 i表示人序号的下标
+    int *data = (int *)malloc((person + 1) * (sizeof(int))); //每个人的密码外加初始密码
+    data[0] = 20;                                            //表示第一个人的初始密码
+    for (int j = 1; j <= person; j++)
+    {
+        data[j] = (-20) + rand() % 20; //随机初始化每个人的密码
+    }
+
+    while (out != person)
+    {
+        i++;
+        if (i > person) //实现循环
+        {
+            i = 1;
+        }
+        if (a[i] == 0) //在没有出局的人中报数
+        {
+            if (data[m] >= 0)
+            {
+                k++;
+                if (k == data[m])
+                {
+                    a[i] = 1; //出局
+                    out++;
+                    m++;   //密码
+                    k = 0; //重新开始报数
+                    printf("%d\t", i);
+                }
+            }
+            if (data[m] < 0)
+            {
+                k--;
+                if (k == data[m])
+                {
+                    a[i] = 1; //出局
+                    out++;
+                    m++;   //密码
+                    k = 0; //重新开始报数
+                    printf("%d\t", i);
+                }
+            }
+        }
+    }
+}
+int main()
+{
+    loop(10);
+
+    return 1;
+}
