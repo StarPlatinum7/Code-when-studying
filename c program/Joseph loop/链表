@@ -1,0 +1,142 @@
+//约瑟夫环问题   链表
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+typedef struct person
+{
+    int x;               //序号
+    int data;            //密码
+    int isout;           //记录是否出列
+    struct person *next; //链接下一个人
+    struct person *pre;  //链接上一个人
+
+} Node;
+
+Node *creatlist(int nsize, int m) //循环创建链表,m为随机数的上限
+{
+    int n = 1;
+    int o = 0;
+    int a[8] = {13, 20, 18, 1, 17, 7, 16, 2}; //示例测试
+    srand(time(NULL));
+
+    if (nsize < 1)
+    {
+        return NULL;
+    }
+    Node *head, *pre, *current;
+    head = malloc(sizeof(Node));
+    head->data = (-m) + rand() % m;
+    // head->data = a[o++];
+    head->isout = 0;
+
+    head->x = n++;
+    head->next = NULL;
+    head->pre = NULL;
+
+    pre = head;
+    for (int i = 1; i < nsize; i++)
+    {
+        current = malloc(sizeof(Node));
+        // current->data = a[o++];
+        current->data = (-m) + rand() % m;
+
+        current->isout = 0;
+
+        current->x = n++;
+        current->next = NULL;
+
+        pre->next = current; //与后面的链接
+        current->pre = pre;  //与前面的链接
+        pre = current;
+    }
+    pre->next = head; //实现双向循环链表
+    head->pre = pre;
+
+    return head;
+}
+void displaylist(Node *head, int nsize)
+{
+    if (nsize == 0)
+    {
+        printf("this link is empty\n");
+    }
+    Node *pnode;
+    int cnt;
+    for (pnode = head; pnode != NULL; pnode = pnode->next)
+    {
+        printf("m=%3d\tx=%3d\n", pnode->data, pnode->x);
+        cnt++;
+        if (cnt == nsize)
+        {
+            break;
+        }
+    }
+    return;
+}
+void loop(int person)
+{
+    srand(time(NULL));
+    int out = 0; //记录出列的人数
+
+    int m = 1 + rand() % 30; //任取一个100内的元素作为报数的起点
+    m = 20;
+    Node *head;
+    head = creatlist(person, m);
+    Node *pnode, *rnode;
+    pnode = head;
+    // displaylist(head, person);
+    clock_t start, finish;
+    double duration;
+    start = clock();
+
+    while (pnode->next != pnode && pnode->pre != pnode)
+    {
+        if (m >= 0)
+        {
+            for (int i = 1; i < m; i++)
+            {
+                rnode = pnode;
+                pnode = pnode->next; //依次报数
+            }
+            // printf("%d\tm=%d\n", pnode->x, pnode->data);
+            m = pnode->data;           // m作为新的密码
+            rnode->next = pnode->next; //删除
+            pnode = pnode->next;       //更新节点从下一个人开始报数
+        }
+        if (m < 0)
+        {
+            for (int i = 1; i < -m; i++)
+            {
+                rnode = pnode;
+                pnode = pnode->pre; //依次报数
+            }
+            // printf("%d\tm=%d\n", pnode->x, pnode->data);
+            m = pnode->data;         // m作为新的密码
+            rnode->pre = pnode->pre; //删除
+            pnode = pnode->pre;      //更新节点从下一个人开始报数
+        }
+    }
+    // printf("%d\t", pnode->x); //输出最后一个的序号
+    finish = clock();
+    duration = (double)(finish - start) / CLOCKS_PER_SEC;
+    printf("%f\n", duration); //打印运行时间
+}
+int main()
+{
+
+    //输出序号以便拟合数据
+    for (int i = 100000; i < 200000; i += 1000)
+    {
+        // printf("%d\n", i);
+    }
+    //开始执行
+    for (int i = 100000; i < 200000; i += 1000)
+    {
+        loop(i);
+    }
+    // loop(8);
+
+    return 1;
+}
